@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -18,7 +20,7 @@ import butterknife.OnClick;
 public class MouseActivity extends AppCompatActivity {
 
     @BindView(R.id.imageView)
-    ImageView imageView;
+    ImageView mouseImageView;
 
     private Thread mouseThread;
     private MouseRun mouseRunnable;
@@ -38,7 +40,7 @@ public class MouseActivity extends AppCompatActivity {
         DisplayMetrics outMetrics = new DisplayMetrics();
         display.getMetrics(outMetrics);
 
-        mouseRunnable = new MouseRun(imageView, this, outMetrics.heightPixels, outMetrics.widthPixels);
+        mouseRunnable = new MouseRun(mouseImageView, this, outMetrics.heightPixels, outMetrics.widthPixels);
         mouseThread = new Thread(mouseRunnable, "mouseThread");
         mouseThread.start();
     }
@@ -52,7 +54,7 @@ public class MouseActivity extends AppCompatActivity {
     public void setParams(final RelativeLayout.LayoutParams layoutParams) {
         runOnUiThread(new Runnable() {
             public void run() {
-                imageView.setLayoutParams(layoutParams);
+                mouseImageView.setLayoutParams(layoutParams);
             }
         });
     }

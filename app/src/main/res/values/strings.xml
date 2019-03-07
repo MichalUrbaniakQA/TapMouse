@@ -12,4 +12,5 @@
     <string name="fast">Fast</string>
     <string name="playSettings">PLAY</string>
     <string name="speed">Speed</string>
+    <string name="give_me_feedback">Give me feedback!</string>
 </resources>
