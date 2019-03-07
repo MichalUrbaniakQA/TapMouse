@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Tap Mouse</string>
+    <string name="exit">EXIT</string>
+    <string name="play">PLAY</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+    <string name="size">Size</string>
+    <string name="back">BACK</string>
+    <string name="slow">Slow</string>
+    <string name="normal">Normal</string>
+    <string name="fast">Fast</string>
+    <string name="playSettings">PLAY</string>
+    <string name="speed">Speed</string>
+</resources>
