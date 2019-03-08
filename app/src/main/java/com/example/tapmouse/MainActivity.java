@@ -51,17 +51,6 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.playButton)
     public void clickPlay() {
         presenterGame.startActivityGame();
-
-//        new AlertDialog.Builder(this)
-//                .setMessage("asd")
-//                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                    }
-//                })
-//                .create()
-//                .show();
     }
 
     @OnClick(R.id.settings)
@@ -79,7 +68,5 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("speed", 50);
 
         startActivity(intent);
-
-//        startActivity(new Intent(this, MouseActivity.class));
     }
 }

@@ -1,5 +1,7 @@
 package com.example.tapmouse.settings;
 
+import android.view.View;
+
 public class ActivitySettingPresenterImpl implements ActivitySettingPresenter {
 
     private SettingsActivity settingsActivity;
@@ -9,7 +11,12 @@ public class ActivitySettingPresenterImpl implements ActivitySettingPresenter {
     }
 
     @Override
-    public void startActivityGame() {
-        settingsActivity.startActivityGame();
+    public void startActivityGame(View view) {
+        settingsActivity.startActivityGame(view);
+    }
+
+    @Override
+    public void sendFeedback(View view) {
+        settingsActivity.sendFeedback(view);
     }
 }

@@ -1,19 +1,26 @@
 package com.example.tapmouse.settings;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.tapmouse.R;
 import com.example.tapmouse.game.MouseActivity;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SettingsActivity extends AppCompatActivity {
 
     private ActivitySettingPresenter presenterGame;
+
+    @BindView(R.id.feedbackTextEditor)
+    EditText feedbackEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +40,34 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.playButtonSettingView)
-    public void startActivityGame() {
+    public void startActivityGame(View view) {
         Intent intent = new Intent(this, MouseActivity.class);
         intent.putExtra("speed", 50);
 
         startActivity(intent);
     }
 
+    @OnClick(R.id.feedbackLayout)
+    public void sendFeedback(View view) {
+        try {
+            startActivity(Intent.createChooser(prepareDataToSendEmail(), "Send mail..."));
+            finish();
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(SettingsActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    private Intent prepareDataToSendEmail(){
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+        String[] TO = {"urbaniak.michal@yahoo.com"};
+
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback from app :)");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, feedbackEditText.getText());
+
+        return emailIntent;
+    }
 }
