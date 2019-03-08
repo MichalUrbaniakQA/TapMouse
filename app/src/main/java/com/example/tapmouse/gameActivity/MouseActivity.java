@@ -29,9 +29,6 @@ public class MouseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         ButterKnife.bind(this);
 
-        System.out.println("sdfgdfghjhfgjkjhghjkiu6tr: " + getIntent().getIntExtra("speed", 10));
-
-
         getSupportActionBar().hide();
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -41,6 +38,9 @@ public class MouseActivity extends AppCompatActivity {
         mouseRunnable = new MouseRun(mouseImageView, this, outMetrics.heightPixels, outMetrics.widthPixels);
         mouseThread = new Thread(mouseRunnable, "mouseThread");
         mouseThread.start();
+
+    //    System.out.println("sdfgdfghjhfgjkjhghjkiu6tr: " + getIntent().getIntExtra("width", 10));
+//        System.out.println("sdfgdfghjhfgjkjhghjkiu6tr: " + getIntent().getIntExtra("height", 10));
     }
 
     @OnClick(R.id.imageView)
@@ -60,13 +60,5 @@ public class MouseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-      //  mouseRunnable = null;
-//
-//        try {
-//            mouseThread.join();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-      //  mouseThread = null;
     }
 }

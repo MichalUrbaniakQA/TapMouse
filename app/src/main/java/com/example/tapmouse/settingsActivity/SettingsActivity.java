@@ -6,21 +6,47 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.tapmouse.R;
 import com.example.tapmouse.gameActivity.MouseActivity;
+import com.example.tapmouse.settingsActivity.size.factory.SizeEnum;
+import com.example.tapmouse.settingsActivity.size.factory.SetSize;
+import com.example.tapmouse.settingsActivity.speed.factory.SetSpeed;
+import com.example.tapmouse.settingsActivity.speed.factory.SpeedEnum;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 public class SettingsActivity extends AppCompatActivity {
 
     private ActivitySettingPresenter presenterGame;
 
+    private SpeedValue speedValue;
+    private SetSpeed setSpeed;
+
+    private SizeValue sizeValue;
+    private SetSize setSize;
+
     @BindView(R.id.feedbackTextEditor)
     EditText feedbackEditText;
+
+    @BindView(R.id.slowSwitch)
+    Switch slow;
+    @BindView(R.id.normalSwitch)
+    Switch normal;
+    @BindView(R.id.fastSwitch)
+    Switch fast;
+
+    @BindView(R.id.smallSwitch)
+    Switch small;
+    @BindView(R.id.mediumSwitch)
+    Switch medium;
+    @BindView(R.id.largeSwitch)
+    Switch large;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +56,13 @@ public class SettingsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         presenterGame = new ActivitySettingPresenterImpl(this);
+        speedValue = new SpeedValue();
+        sizeValue = new SizeValue();
 
         getSupportActionBar().hide();
+
+        normal.setChecked(true);
+        medium.setChecked(true);
     }
 
     @OnClick(R.id.backButton)
@@ -42,7 +73,9 @@ public class SettingsActivity extends AppCompatActivity {
     @OnClick(R.id.playButtonSettingView)
     public void startActivityGame(View view) {
         Intent intent = new Intent(this, MouseActivity.class);
-        intent.putExtra("speed", 50);
+        intent.putExtra("speed", setSpeed.speed());
+     //   intent.putExtra("width", setSize.mouseWidth(view.getWidth()));
+    //    intent.putExtra("height", setSize.mouseHeight(view.getHeight()));
 
         startActivity(intent);
     }
@@ -55,6 +88,78 @@ public class SettingsActivity extends AppCompatActivity {
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(SettingsActivity.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @OnCheckedChanged({R.id.slowSwitch, R.id.normalSwitch, R.id.fastSwitch})
+    public void setMouseSpeed(Switch switchButton, boolean isChecked){
+        if (isChecked)
+            switch (switchButton.getId()){
+                case R.id.slowSwitch:
+                    setSlowSpeed();
+                    break;
+
+                case R.id.normalSwitch:
+                    setNormalSpeed();
+                    break;
+
+                case R.id.fastSwitch:
+                    setFastSpeed();
+                    break;
+            }
+    }
+
+    @OnCheckedChanged({R.id.smallSwitch, R.id.mediumSwitch, R.id.largeSwitch})
+    public void setMouseSize(Switch switchButton, boolean isChecked){
+        if (isChecked)
+            switch (switchButton.getId()){
+                case R.id.smallSwitch:
+                    setSmallSize();
+                    break;
+
+                case R.id.mediumSwitch:
+                    setMediumSize();
+                    break;
+
+                case R.id.largeSwitch:
+                    setLargeSize();
+                    break;
+            }
+    }
+
+    private void setSlowSpeed(){
+        normal.setChecked(false);
+        fast.setChecked(false);
+        this.setSpeed = speedValue.mouseSpeed(SpeedEnum.SLOW);
+    }
+
+    private void setNormalSpeed(){
+        slow.setChecked(false);
+        fast.setChecked(false);
+        this.setSpeed = speedValue.mouseSpeed(SpeedEnum.NORMAL);
+    }
+
+    private void setFastSpeed(){
+        slow.setChecked(false);
+        normal.setChecked(false);
+        this.setSpeed = speedValue.mouseSpeed(SpeedEnum.FAST);
+    }
+
+    private void setSmallSize(){
+        medium.setChecked(false);
+        large.setChecked(false);
+        this.setSize = sizeValue.mouseLarge(SizeEnum.SMALL);
+    }
+
+    private void setMediumSize(){
+        small.setChecked(false);
+        large.setChecked(false);
+        this.setSize = sizeValue.mouseLarge(SizeEnum.MEDIUM);
+    }
+
+    private void setLargeSize(){
+        small.setChecked(false);
+        medium.setChecked(false);
+        this.setSize = sizeValue.mouseLarge(SizeEnum.LARGE);
     }
 
     private Intent prepareDataToSendEmail(){
