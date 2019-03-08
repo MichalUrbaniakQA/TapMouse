@@ -1,4 +1,4 @@
-package com.example.tapmouse.settings;
+package com.example.tapmouse.settingsActivity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tapmouse.R;
-import com.example.tapmouse.game.MouseActivity;
+import com.example.tapmouse.gameActivity.MouseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,8 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         String[] TO = {"urbaniak.michal@yahoo.com"};
 
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
+        emailIntent.setDataAndType(Uri.parse("mailto:"), "text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback from app :)");
         emailIntent.putExtra(Intent.EXTRA_TEXT, feedbackEditText.getText());

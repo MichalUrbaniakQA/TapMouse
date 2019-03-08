@@ -1,4 +1,4 @@
-package com.example.tapmouse;
+package com.example.tapmouse.mainActivity;
 
 public interface ActivityMainPresenter { ;
 

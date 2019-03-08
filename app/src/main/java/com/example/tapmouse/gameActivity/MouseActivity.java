@@ -1,4 +1,4 @@
-package com.example.tapmouse.game;
+package com.example.tapmouse.gameActivity;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 

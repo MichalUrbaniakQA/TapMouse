@@ -13,4 +13,5 @@
     <string name="playSettings">PLAY</string>
     <string name="speed">Speed</string>
     <string name="give_me_feedback">Give me feedback!</string>
+    <string name="tell_me_what_you_think_about_my_application">Tell me what you think about my application :)</string>
 </resources>

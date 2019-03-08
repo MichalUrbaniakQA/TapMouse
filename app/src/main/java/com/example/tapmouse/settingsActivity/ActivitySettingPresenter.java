@@ -1,4 +1,4 @@
-package com.example.tapmouse.settings;
+package com.example.tapmouse.settingsActivity;
 
 import android.view.View;
 

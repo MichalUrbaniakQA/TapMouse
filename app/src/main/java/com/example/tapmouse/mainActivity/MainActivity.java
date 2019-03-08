@@ -1,4 +1,4 @@
-package com.example.tapmouse;
+package com.example.tapmouse.mainActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.example.tapmouse.game.MouseActivity;
-import com.example.tapmouse.settings.SettingsActivity;
+import com.example.tapmouse.R;
+import com.example.tapmouse.gameActivity.MouseActivity;
+import com.example.tapmouse.settingsActivity.SettingsActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

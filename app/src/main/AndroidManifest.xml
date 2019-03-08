@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".game.MouseActivity"></activity>
-        <activity android:name=".settings.SettingsActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".gameActivity.MouseActivity"></activity>
+        <activity android:name=".settingsActivity.SettingsActivity"></activity>
+        <activity android:name=".mainActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

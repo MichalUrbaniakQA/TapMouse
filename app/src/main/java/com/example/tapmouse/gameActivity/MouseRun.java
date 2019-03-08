@@ -1,4 +1,4 @@
-package com.example.tapmouse.game;
+package com.example.tapmouse.gameActivity;
 
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
