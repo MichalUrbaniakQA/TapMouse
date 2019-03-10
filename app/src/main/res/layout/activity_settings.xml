@@ -216,7 +216,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/slowSwitch" />
+            app:layout_constraintTop_toBottomOf="@+id/slowText" />
 
         <View
             android:id="@+id/lineNormalFast"
@@ -227,11 +227,21 @@
             android:layout_marginEnd="64dp"
             android:background="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/normalSwitch" />
+            app:layout_constraintTop_toBottomOf="@+id/normalText" />
 
         <Switch
             android:id="@+id/slowSwitch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/normalSwitch"
+            app:layout_constraintStart_toStartOf="@+id/normalSwitch"
+            app:layout_constraintTop_toTopOf="@+id/lineSlowNormal" />
+
+        <Switch
+            android:id="@+id/normalSwitch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -242,23 +252,14 @@
             app:layout_constraintTop_toBottomOf="@+id/infoSpeedTextView" />
 
         <Switch
-            android:id="@+id/normalSwitch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/slowSwitch"
-            app:layout_constraintStart_toStartOf="@+id/slowSwitch"
-            app:layout_constraintTop_toBottomOf="@+id/lineSlowNormal" />
-
-        <Switch
             android:id="@+id/fastSwitch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/normalSwitch"
-            app:layout_constraintStart_toStartOf="@+id/normalSwitch"
+            app:layout_constraintEnd_toEndOf="@+id/slowSwitch"
+            app:layout_constraintStart_toStartOf="@+id/slowSwitch"
             app:layout_constraintTop_toBottomOf="@+id/lineNormalFast" />
 
         <TextView
@@ -269,10 +270,10 @@
             android:layout_marginEnd="8dp"
             android:text="@string/slow"
             android:textColor="#000000"
-            app:layout_constraintBottom_toBottomOf="@+id/slowSwitch"
-            app:layout_constraintEnd_toStartOf="@+id/slowSwitch"
+            app:layout_constraintEnd_toStartOf="@+id/normalSwitch"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/slowSwitch" />
+            tools:layout_editor_absoluteY="43dp" />
 
 
         <TextView
@@ -283,10 +284,12 @@
             android:layout_marginEnd="8dp"
             android:text="@string/normal"
             android:textColor="#000000"
-            app:layout_constraintBottom_toBottomOf="@+id/normalSwitch"
-            app:layout_constraintEnd_toStartOf="@+id/normalSwitch"
+            app:layout_constraintBottom_toBottomOf="@+id/slowSwitch"
+            app:layout_constraintEnd_toStartOf="@+id/slowSwitch"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/normalSwitch" />
+            app:layout_constraintTop_toTopOf="@+id/slowSwitch"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/FastText"

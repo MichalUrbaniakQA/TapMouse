@@ -3,6 +3,8 @@ package com.example.tapmouse.mainActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -12,6 +14,10 @@ import android.widget.ImageView;
 import com.example.tapmouse.R;
 import com.example.tapmouse.gameActivity.MouseActivity;
 import com.example.tapmouse.settingsActivity.SettingsActivity;
+import com.example.tapmouse.settingsActivity.speed.factory.NormalSpeed;
+import com.example.tapmouse.settingsActivity.speed.factory.SpeedEnum;
+
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.settings)
     ImageView wheel;
 
+    public static int heightWindow;
+    public static int widthWindow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
         presenterGame = new ActivityMainPresenterImpl(this);
 
         getSupportActionBar().hide();
+
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+
+        heightWindow = outMetrics.heightPixels;
+        widthWindow = outMetrics.widthPixels;
     }
 
     @Override
@@ -64,10 +80,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startActivityGame() {
-
         Intent intent = new Intent(this, MouseActivity.class);
-        intent.putExtra("speed", 50);
-
         startActivity(intent);
     }
 }

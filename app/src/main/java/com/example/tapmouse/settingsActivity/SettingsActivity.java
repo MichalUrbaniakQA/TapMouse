@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.tapmouse.R;
 import com.example.tapmouse.gameActivity.MouseActivity;
+import com.example.tapmouse.mainActivity.MainActivity;
 import com.example.tapmouse.settingsActivity.size.factory.SizeEnum;
 import com.example.tapmouse.settingsActivity.size.factory.SetSize;
 import com.example.tapmouse.settingsActivity.speed.factory.SetSpeed;
@@ -22,8 +23,6 @@ import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 public class SettingsActivity extends AppCompatActivity {
-
-    private ActivitySettingPresenter presenterGame;
 
     private SpeedValue speedValue;
     private SetSpeed setSpeed;
@@ -55,7 +54,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        presenterGame = new ActivitySettingPresenterImpl(this);
         speedValue = new SpeedValue();
         sizeValue = new SizeValue();
 
@@ -66,16 +64,17 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.backButton)
-    public void clickBack(View view) {
+    public void clickBack() {
         finish();
     }
 
     @OnClick(R.id.playButtonSettingView)
-    public void startActivityGame(View view) {
+    public void startActivityGame() {
         Intent intent = new Intent(this, MouseActivity.class);
+
         intent.putExtra("speed", setSpeed.speed());
-     //   intent.putExtra("width", setSize.mouseWidth(view.getWidth()));
-    //    intent.putExtra("height", setSize.mouseHeight(view.getHeight()));
+        intent.putExtra("width", setSize.mouseWidth(MainActivity.widthWindow));
+        intent.putExtra("height", setSize.mouseHeight(MainActivity.heightWindow));
 
         startActivity(intent);
     }
@@ -147,19 +146,19 @@ public class SettingsActivity extends AppCompatActivity {
     private void setSmallSize(){
         medium.setChecked(false);
         large.setChecked(false);
-        this.setSize = sizeValue.mouseLarge(SizeEnum.SMALL);
+        this.setSize = sizeValue.mouseSize(SizeEnum.SMALL);
     }
 
     private void setMediumSize(){
         small.setChecked(false);
         large.setChecked(false);
-        this.setSize = sizeValue.mouseLarge(SizeEnum.MEDIUM);
+        this.setSize = sizeValue.mouseSize(SizeEnum.MEDIUM);
     }
 
     private void setLargeSize(){
         small.setChecked(false);
         medium.setChecked(false);
-        this.setSize = sizeValue.mouseLarge(SizeEnum.LARGE);
+        this.setSize = sizeValue.mouseSize(SizeEnum.LARGE);
     }
 
     private Intent prepareDataToSendEmail(){

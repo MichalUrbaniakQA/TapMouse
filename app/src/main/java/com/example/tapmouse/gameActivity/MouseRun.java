@@ -8,7 +8,7 @@ public class MouseRun implements Runnable {
     private ImageView mouse;
     private MouseActivity mouseActivity;
     private int screenWidth, screenHeight;
-    private int speed;
+    private int defaultNormalHeightMouse, defaultNormalWidthMouse;
 
     private MousePosition mousePosition = new MousePosition();
 
@@ -17,31 +17,26 @@ public class MouseRun implements Runnable {
         this.mouse = mouse;
         this.screenHeight = heightPixels;
         this.screenWidth = widthPixels;
-       // this.speed = mouseActivity.getIntent().getIntExtra("speed", 10);
-     //   System.out.println(heightPixels + " " + widthPixels);
-
+        this.defaultNormalHeightMouse = screenHeight / 7;
+        this.defaultNormalWidthMouse = screenHeight / 5;
     }
 
     @Override
     public void run() {
         while (true) {
 
-//            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(90, 135);
-            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(90, 135);
+            int speedMouse = mouseActivity.getIntent().getIntExtra("speed", 30);
+            int widthMouse = mouseActivity.getIntent().getIntExtra("height", defaultNormalHeightMouse);
+            int heightMouse = mouseActivity.getIntent().getIntExtra("width", defaultNormalWidthMouse);
+
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(widthMouse, heightMouse);
             layoutParams.setMargins(mousePosition.getMarginLeft(), mousePosition.getMarginTop(), 0, 0);
 
             mouseActivity.setParams(layoutParams);
 
-            speed = mouseActivity.getIntent().getIntExtra("speed", 1);
-            System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb " + speed);
-
-            mouseSpeed(speed);
+            mouseSpeed(speedMouse);
 
             mousePosition.setCourse(10, mouse, screenHeight, screenWidth);
-
-
-        //    System.out.println(mouse.getWidth() + " " + mouse.getHeight());
-       //     System.out.println(mouseActivity.getIntent().toString());
         }
     }
 

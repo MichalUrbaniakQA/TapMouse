@@ -3,12 +3,12 @@ package com.example.tapmouse.settingsActivity.size.factory;
 public class MediumSize implements SetSize {
 
     @Override
-    public double mouseWidth(double width) {
-        return width/5.20;
+    public int mouseWidth(int width) {
+        return width/5;
     }
 
     @Override
-    public double mouseHeight(double height) {
-        return height/7.50;
+    public int mouseHeight(int height) {
+        return height/7;
     }
 }

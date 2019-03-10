@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.example.tapmouse.R;
+import com.example.tapmouse.mainActivity.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,9 +21,6 @@ public class MouseActivity extends AppCompatActivity {
     @BindView(R.id.imageView)
     ImageView mouseImageView;
 
-    private Thread mouseThread;
-    private MouseRun mouseRunnable;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,16 +29,10 @@ public class MouseActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        Display display = getWindowManager().getDefaultDisplay();
-        DisplayMetrics outMetrics = new DisplayMetrics();
-        display.getMetrics(outMetrics);
+        MouseRun mouseRunnable = new MouseRun(mouseImageView, this, MainActivity.heightWindow, MainActivity.widthWindow);
 
-        mouseRunnable = new MouseRun(mouseImageView, this, outMetrics.heightPixels, outMetrics.widthPixels);
-        mouseThread = new Thread(mouseRunnable, "mouseThread");
+        Thread mouseThread = new Thread(mouseRunnable, "mouseThread");
         mouseThread.start();
-
-    //    System.out.println("sdfgdfghjhfgjkjhghjkiu6tr: " + getIntent().getIntExtra("width", 10));
-//        System.out.println("sdfgdfghjhfgjkjhghjkiu6tr: " + getIntent().getIntExtra("height", 10));
     }
 
     @OnClick(R.id.imageView)
