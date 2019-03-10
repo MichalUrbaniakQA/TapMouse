@@ -36,7 +36,7 @@ public class MouseRun implements Runnable {
 
             mouseSpeed(speedMouse);
 
-            mousePosition.setCourse(10, mouse, screenHeight, screenWidth);
+            mousePosition.setCourse(10, mouse, screenHeight + defaultNormalHeightMouse, screenWidth);
         }
     }
 

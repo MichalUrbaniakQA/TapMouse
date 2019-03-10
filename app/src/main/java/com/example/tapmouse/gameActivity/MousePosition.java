@@ -56,11 +56,11 @@ public class MousePosition {
         }
     }
 
-    public int getMarginTop() {
+    int getMarginTop() {
         return marginTop;
     }
 
-    public int getMarginLeft() {
+    int getMarginLeft() {
         return marginLeft;
     }
 }
