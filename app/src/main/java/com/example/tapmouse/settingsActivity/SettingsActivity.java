@@ -12,8 +12,8 @@ import android.widget.Toast;
 import com.example.tapmouse.R;
 import com.example.tapmouse.gameActivity.MouseActivity;
 import com.example.tapmouse.mainActivity.MainActivity;
-import com.example.tapmouse.settingsActivity.size.factory.SizeEnum;
 import com.example.tapmouse.settingsActivity.size.factory.SetSize;
+import com.example.tapmouse.settingsActivity.size.factory.SizeEnum;
 import com.example.tapmouse.settingsActivity.speed.factory.SetSpeed;
 import com.example.tapmouse.settingsActivity.speed.factory.SpeedEnum;
 
@@ -90,9 +90,9 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     @OnCheckedChanged({R.id.slowSwitch, R.id.normalSwitch, R.id.fastSwitch})
-    public void setMouseSpeed(Switch switchButton, boolean isChecked){
+    public void setMouseSpeed(Switch switchButton, boolean isChecked) {
         if (isChecked)
-            switch (switchButton.getId()){
+            switch (switchButton.getId()) {
                 case R.id.slowSwitch:
                     setSlowSpeed();
                     break;
@@ -108,9 +108,9 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     @OnCheckedChanged({R.id.smallSwitch, R.id.mediumSwitch, R.id.largeSwitch})
-    public void setMouseSize(Switch switchButton, boolean isChecked){
+    public void setMouseSize(Switch switchButton, boolean isChecked) {
         if (isChecked)
-            switch (switchButton.getId()){
+            switch (switchButton.getId()) {
                 case R.id.smallSwitch:
                     setSmallSize();
                     break;
@@ -125,43 +125,43 @@ public class SettingsActivity extends AppCompatActivity {
             }
     }
 
-    private void setSlowSpeed(){
+    private void setSlowSpeed() {
         normal.setChecked(false);
         fast.setChecked(false);
         this.setSpeed = speedValue.mouseSpeed(SpeedEnum.SLOW);
     }
 
-    private void setNormalSpeed(){
+    private void setNormalSpeed() {
         slow.setChecked(false);
         fast.setChecked(false);
         this.setSpeed = speedValue.mouseSpeed(SpeedEnum.NORMAL);
     }
 
-    private void setFastSpeed(){
+    private void setFastSpeed() {
         slow.setChecked(false);
         normal.setChecked(false);
         this.setSpeed = speedValue.mouseSpeed(SpeedEnum.FAST);
     }
 
-    private void setSmallSize(){
+    private void setSmallSize() {
         medium.setChecked(false);
         large.setChecked(false);
         this.setSize = sizeValue.mouseSize(SizeEnum.SMALL);
     }
 
-    private void setMediumSize(){
+    private void setMediumSize() {
         small.setChecked(false);
         large.setChecked(false);
         this.setSize = sizeValue.mouseSize(SizeEnum.MEDIUM);
     }
 
-    private void setLargeSize(){
+    private void setLargeSize() {
         small.setChecked(false);
         medium.setChecked(false);
         this.setSize = sizeValue.mouseSize(SizeEnum.LARGE);
     }
 
-    private Intent prepareDataToSendEmail(){
+    private Intent prepareDataToSendEmail() {
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
         String[] TO = {"urbaniak.michal@yahoo.com"};

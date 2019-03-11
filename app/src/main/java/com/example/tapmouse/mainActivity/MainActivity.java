@@ -14,10 +14,6 @@ import android.widget.ImageView;
 import com.example.tapmouse.R;
 import com.example.tapmouse.gameActivity.MouseActivity;
 import com.example.tapmouse.settingsActivity.SettingsActivity;
-import com.example.tapmouse.settingsActivity.speed.factory.NormalSpeed;
-import com.example.tapmouse.settingsActivity.speed.factory.SpeedEnum;
-
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

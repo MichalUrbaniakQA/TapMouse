@@ -1,6 +1,6 @@
 package com.example.tapmouse.mainActivity;
 
-public interface ActivityMainPresenter { ;
+public interface ActivityMainPresenter {
 
     void startActivityGame();
 

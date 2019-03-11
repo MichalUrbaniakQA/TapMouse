@@ -4,7 +4,7 @@ public class ActivityMainPresenterImpl implements ActivityMainPresenter {
 
     private MainActivity mainActivity;
 
-    public ActivityMainPresenterImpl(MainActivity mainActivity) {
+    ActivityMainPresenterImpl(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
     }
 

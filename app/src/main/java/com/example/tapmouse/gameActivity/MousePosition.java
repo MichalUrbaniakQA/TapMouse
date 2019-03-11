@@ -46,7 +46,7 @@ class MousePosition {
         setRotation(mouse, corner);
     }
 
-    private void setRotation(final ImageView imageView, final int corner){
+    private void setRotation(final ImageView imageView, final int corner) {
         mouseActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
