@@ -2,7 +2,7 @@
 Game designed for the cats
 
 ## Idea
-As software tester I want to better understand what I testing
+As a software tester i want to better understand what i am testing
 
 ## Installation
 Clone this repository and import into Android Studio
