@@ -6,7 +6,7 @@ import com.example.tapmouse.settingsActivity.speed.factory.SetSpeed;
 import com.example.tapmouse.settingsActivity.speed.factory.SlowSpeed;
 import com.example.tapmouse.settingsActivity.speed.factory.SpeedEnum;
 
-public class SpeedValue {
+class SpeedValue {
 
     SetSpeed mouseSpeed(SpeedEnum speedEnum) {
 

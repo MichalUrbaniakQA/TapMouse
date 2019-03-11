@@ -6,7 +6,7 @@ import com.example.tapmouse.settingsActivity.size.factory.SetSize;
 import com.example.tapmouse.settingsActivity.size.factory.SizeEnum;
 import com.example.tapmouse.settingsActivity.size.factory.SmallSize;
 
-public class SizeValue {
+class SizeValue {
 
     SetSize mouseSize(SizeEnum sizeEnum) {
 
