@@ -6,13 +6,13 @@ import android.widget.RelativeLayout;
 public class MouseRun implements Runnable {
 
     private ImageView mouse;
+
     private MouseActivity mouseActivity;
+
     private int screenWidth, screenHeight;
     private int defaultNormalHeightMouse, defaultNormalWidthMouse;
 
-    private MousePosition mousePosition = new MousePosition();
-
-    public MouseRun(ImageView mouse, MouseActivity mouseActivity, int heightPixels, int widthPixels) {
+    MouseRun(ImageView mouse, MouseActivity mouseActivity, int heightPixels, int widthPixels) {
         this.mouseActivity = mouseActivity;
         this.mouse = mouse;
         this.screenHeight = heightPixels;
@@ -20,6 +20,8 @@ public class MouseRun implements Runnable {
         this.defaultNormalHeightMouse = screenHeight / 7;
         this.defaultNormalWidthMouse = screenHeight / 5;
     }
+
+    private MousePosition mousePosition = new MousePosition();
 
     @Override
     public void run() {
@@ -36,7 +38,7 @@ public class MouseRun implements Runnable {
 
             mouseSpeed(speedMouse);
 
-            mousePosition.setCourse(10, mouse, screenHeight + defaultNormalHeightMouse, screenWidth);
+            mousePosition.setCourse(mouseActivity, mouse, screenHeight + defaultNormalHeightMouse, screenWidth);
         }
     }
 

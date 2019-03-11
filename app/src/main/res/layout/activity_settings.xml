@@ -61,6 +61,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/layout_feedback_editor"
+            android:hint="   Enter your message...."
             app:layout_constraintBottom_toTopOf="@+id/feedbackLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
